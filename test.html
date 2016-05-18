@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="film.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="filmRemovethistostopvideoonload.js"></script>
+
+</head>
+<body>
+
+
+<video controls muted autoplay  id="bgvid" loop>
+    <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+
+    <source src="https://dl.dropboxusercontent.com/u/88325629/Ravfestival%20i%20Vejers%20den%2023.%20-%2025.%20september%202016.mp4" type="video/mp4">
+</video>
+<div id="polina">
+    <h1>RAV FESTIVAL</h1>
+    <p>Bliv fortryllet af de naturlige fossiler fundet på stranden I vejers
+    <nav>
+        <ul>
+
+            <li><a href="#events">Events</a></li>
+            <li><a href="#info">Information</a></li>
+            <li><a href="#vejers">Om Vejers</a></li>
+            <li><a href="#vejers">Tilmelding</a></li>
+            <li><a href="#vejers">Kontakt</a></li>
+
+        </ul>
+
+    </nav>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta dictum turpis, eu mollis justo gravida ac. Proin non eros blandit, rutrum est a, cursus quam. Nam ultricies, velit ac suscipit vehicula, turpis eros sollicitudin lacus, at convallis mauris magna non justo. Etiam et suscipit elit. Morbi eu ornare nulla, sit amet ornare est. Sed vehicula ipsum a mattis dapibus. Etiam volutpat vel enim at auctor.</p>
+    <p>Aenean pharetra convallis pellentesque. Vestibulum et metus lectus. Nunc consectetur, ipsum in viverra eleifend, erat erat ultricies felis, at ultricies mi massa eu ligula. Suspendisse in justo dapibus metus sollicitudin ultrices id sed nisl.</p>
+    <button>Pause</button>
+</div>
+
+<script>
+    var vid = document.getElementById("bgvid");
+    var pauseButton = document.querySelector("#polina button");
+
+    function vidFade() {
+        vid.classList.add("stopfade");
+    }
+
+    vid.addEventListener('ended', function()
+    {
+// only functional if "loop" is removed
+        vid.pause();
+// to capture IE10
+        vidFade();
+    });
+
+
+    pauseButton.addEventListener("click", function() {
+        vid.classList.toggle("stopfade");
+        if (vid.paused) {
+            vid.play();
+            pauseButton.innerHTML = "Pause";
+        } else {
+            vid.pause();
+            pauseButton.innerHTML = "Paused";
+        }
+    })
+
+
+
+</script>
+</body>
+</html>
